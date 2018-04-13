@@ -179,7 +179,7 @@ leaf.debug.crt
 client.key: Secret key for TLS client authentication
 client.pem: Public key for TLS client authentication
 
-See https://github.com/Shyp/generate-tls-cert for examples of how to use in code.
+See https://github.com/kevinburke/generate-tls-cert for examples of how to use in code.
 `)
 }
 

@@ -20,7 +20,7 @@ the initial version of this script on a golang-nuts message thread.
 ## Installation
 
 ```bash
-go get github.com/Shyp/generate-tls-cert
+go get github.com/kevinburke/generate-tls-cert
 ```
 
 ## Usage
@@ -75,7 +75,7 @@ TLS certificates.
 GENERATE_TLS_CERT = $(GOPATH)/bin/generate-tls-cert
 
 $(GENERATE_TLS_CERT):
-	go get -u github.com/Shyp/generate-tls-cert
+	go get -u github.com/kevinburke/generate-tls-cert
 
 certs/leaf.pem: | $(GENERATE_TLS_CERT)
 	mkdir -p certs
