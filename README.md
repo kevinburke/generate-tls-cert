@@ -190,3 +190,19 @@ https.createServer(options, (req, res) => {
   res.end('hello world\n');
 }).listen(8000);
 ```
+
+### nginx
+
+Add the following stanza to your `nginx.conf` file.
+
+```
+ssl                  on;
+ssl_certificate      /path/to/leaf.pem;
+ssl_certificate_key  /path/to/leaf.key;
+
+ssl_session_timeout  5m;
+
+ssl_protocols  TLSv1.2;
+ssl_ciphers "FIND UP TO DATE LIST OF CIPHERS";
+ssl_prefer_server_ciphers   on;
+```
