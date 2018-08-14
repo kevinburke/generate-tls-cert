@@ -1,6 +1,13 @@
+BUMP_VERSION := $(GOPATH)/bin/bump_version
 RELEASE := $(GOPATH)/bin/github-release
 
-release:
+$(BUMP_VERSION):
+	go get github.com/kevinburke/bump_version
+
+$(RELEASE):
+	go get -u github.com/aktau/github-release
+
+release: | $(BUMP_VERSION) $(RELEASE)
 ifndef version
 	@echo "Please provide a version"
 	exit 1
@@ -9,7 +16,7 @@ ifndef GITHUB_TOKEN
 	@echo "Please set GITHUB_TOKEN in the environment"
 	exit 1
 endif
-	git tag $(version)
+	$(BUMP_VERSION) --version=$(version) generate.go
 	git push origin --tags
 	mkdir -p releases/$(version)
 	GOOS=linux GOARCH=amd64 go build -o releases/$(version)/generate-tls-cert-linux-amd64 .
